@@ -67,24 +67,24 @@ spec:
   template:
     pod:
       containers:
-        - env:
-            - name: MQSNOAUT
-              value: "yes"
-            - name: MQ_DEV
+      - name: qmgr
+        env:
+        - name: MQSNOAUT
+          value: "yes"
+        - name: MQ_DEV
               value: "true"
-            - name: MQ_CONNAUTH_USE_HTP
-              value: "true"
-            - name: MQ_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: my-mq-dev-passwords
-                  key: dev-admin-password
-            - name: MQ_APP_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: my-mq-dev-passwords
-                  key: dev-app-password
-          name: qmgr
+        - name: MQ_CONNAUTH_USE_HTP
+            value: "true"
+        - name: MQ_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: my-mq-dev-passwords
+                key: dev-admin-password
+        - name: MQ_APP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-mq-dev-passwords
+              key: dev-app-password
   terminationGracePeriodSeconds: 30
   tracing:
     agent: {}
