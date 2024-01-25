@@ -71,6 +71,10 @@ spec:
           env:
             - name: MQSNOAUT
               value: "yes"
+            - name: MQ_DEV
+              value: "true"
+            - name: MQ_CONNAUTH_USE_HTP
+              value: "true"
             - name: MQ_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:
