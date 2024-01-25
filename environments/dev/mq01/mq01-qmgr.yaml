@@ -17,7 +17,7 @@ spec:
             - tls.crt
   queueManager:
     debug: false
-    image: image-registry.openshift-image-registry.svc:5000/mq01-ci/mq01:5
+    image: image-registry.openshift-image-registry.svc:5000/mq01-ci/mq01:6
     imagePullPolicy: Always
     livenessProbe:
       failureThreshold: 1
@@ -71,6 +71,16 @@ spec:
           env:
             - name: MQSNOAUT
               value: "yes"
+            - name: MQ_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-mq-dev-passwords
+                  key: dev-admin-password
+            - name: MQ_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-mq-dev-passwords
+                  key: dev-app-password
   terminationGracePeriodSeconds: 30
   tracing:
     agent: {}
