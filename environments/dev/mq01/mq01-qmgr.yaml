@@ -17,7 +17,7 @@ spec:
             - tls.crt
   queueManager:
     debug: false
-    image: image-registry.openshift-image-registry.svc:5000/mq01-ci/mq01:0.0.4
+    image: image-registry.openshift-image-registry.svc:5000/mq01-ci/mq01:0.0.5
     imagePullPolicy: Always
     livenessProbe:
       failureThreshold: 1
@@ -48,10 +48,10 @@ spec:
     resources:
       limits:
         cpu: "300m"
-        memory: 1Gi
+        memory: 500Mi
       requests:
         cpu: "50m"
-        memory: 2Gi
+        memory: 250Mi
     availability:
       type: SingleInstance
     storage:
